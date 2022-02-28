@@ -1,13 +1,29 @@
 <script setup>
 import { onBeforeMount, ref } from "vue";
 import { useRouter } from "vue-router";
+import { useForm, useField } from "vee-validate";
+import * as yup from "yup";
+
+// Form validation
+const schema = yup.object({
+  username: yup.string().required().email().label("Email "),
+  password: yup.string().required().min(8).label("Password"),
+});
+
+useForm({
+  validationSchema: schema,
+});
+
+const { value: username, errorMessage: emailError } = useField("username");
+const { value: password, errorMessage: passwordError } = useField("password");
+
 import useAuth from "../composable/useAuth";
 import useError from "../composable/useError";
 
 const { isAuthenticated, login, signup, googleLogin } = useAuth();
 
-const username = ref("");
-const password = ref("");
+// const username = ref("");
+// const password = ref("");
 
 const router = useRouter();
 
@@ -47,6 +63,9 @@ const { ready, start } = useTimeout(3000, { controls: true });
   <div
     class="flex flex-col justify-center items-center min-h-screen-nonav bg-inherit"
   >
+    <h2 class="font-extralight text-6xl tracking-tighter text-white pb-12">
+      Login or Sign Up
+    </h2>
     <div
       class="flex shadow-2xl rounded-lg justify-center items-center bg-gray-300 overflow-hidden px-4"
     >
@@ -60,20 +79,29 @@ const { ready, start } = useTimeout(3000, { controls: true });
           <p class="pt-3 text-white">Sign in with Google</p>
         </button>
         <div>
-          <p class="text-center text-xs m-0 p-0">-------- OR --------</p>
+          <p class="text-center text-xs m-0 p-0">
+            ------------------ OR ------------------
+          </p>
         </div>
         <input
+          name="username"
           type="text"
           class="border-2 p-2 rounded-lg border-gray-500"
           placeholder="Username"
           v-model="username"
         />
+        <span class="text-red-500 text-center text-xs">{{ emailError }}</span>
         <input
+          name="password"
           type="password"
           class="border-2 p-2 rounded-lg border-gray-500"
           placeholder="Password"
           v-model="password"
         />
+        <span class="text-red-500 text-center text-xs">{{
+          passwordError
+        }}</span>
+
         <div class="flex space-x-2">
           <button
             type="submit"
