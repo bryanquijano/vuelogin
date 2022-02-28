@@ -11,8 +11,8 @@ const password = ref("");
 
 const router = useRouter();
 
-const logginIn = () => {
-  login(username.value, password.value);
+const logginIn = async () => {
+  await login(username.value, password.value);
   // If user is authenticated, send them to the home page
   if (isAuthenticated.value) {
     router.push("/");
