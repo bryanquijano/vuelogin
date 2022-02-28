@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 import useAuth from "../composable/useAuth";
 import useError from "../composable/useError";
 
-const { isAuthenticated, login, signup } = useAuth();
+const { isAuthenticated, login, signup, googleLogin } = useAuth();
 
 const username = ref("");
 const password = ref("");
@@ -18,6 +18,11 @@ const logginIn = async () => {
 
 const signingUp = async () => {
   await signup(username.value, password.value);
+  goToHome();
+};
+
+const google = async () => {
+  await googleLogin();
   goToHome();
 };
 
@@ -42,12 +47,21 @@ const { ready, start } = useTimeout(3000, { controls: true });
   <div
     class="flex flex-col justify-center items-center min-h-screen-nonav bg-inherit"
   >
-    <!-- Logged in: {{ isAuthenticated }} -->
     <div
-      class="flex shadow-2xl rounded-lg justify-center items-center bg-gray-300 overflow-hidden"
+      class="flex shadow-2xl rounded-lg justify-center items-center bg-gray-300 overflow-hidden px-4"
     >
       <img class="h-64" src="../assets/bglogin.png" alt="Hello GB" />
-      <form @submit.prevent="logginIn" class="flex flex-col space-y-4 p-4">
+      <form @submit.prevent="logginIn" class="flex flex-col space-y-4 pl-8 p-4">
+        <button
+          @click="google"
+          class="bg-blue-600 hover:bg-blue-800 p-1 rounded-md"
+        >
+          <img src="../assets/googlelogo.svg" alt="" class="float-left" />
+          <p class="pt-3 text-white">Sign in with Google</p>
+        </button>
+        <div>
+          <p class="text-center text-xs m-0 p-0">-------- OR --------</p>
+        </div>
         <input
           type="text"
           class="border-2 p-2 rounded-lg border-gray-500"
