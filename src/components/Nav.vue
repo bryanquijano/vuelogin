@@ -14,7 +14,7 @@ const loggingOut = () => {
 </script>
 
 <template>
-  <div class="bg-red-800 text-red-200 border-b-4 border-red-900">
+  <div class="bg-gray-800 text-white border-b-4 border-gray-600">
     <div class="container mx-auto flex justify-between items-center">
       <h1 class="text-3xl font-thin tracking-tighter">
         Vue<span class="font-normal">RealAuth</span>
@@ -24,7 +24,7 @@ const loggingOut = () => {
           <!-- Static method -->
           <router-link to="/">
             <li
-              class="py-8 px-4 hover:cursor-pointer hover:bg-red-200 hover:text-red-800"
+              class="py-8 px-4 hover:cursor-pointer text-white hover:text-gray-700 hover:bg-gray-300"
             >
               Home
             </li>
@@ -32,7 +32,7 @@ const loggingOut = () => {
           <!-- Dynamic method -->
           <router-link :to="{ name: 'About' }">
             <li
-              class="py-8 px-4 hover:cursor-pointer hover:bg-red-200 hover:text-red-800"
+              class="py-8 px-4 hover:cursor-pointer text-white hover:text-gray-700 hover:bg-gray-300"
             >
               About
             </li>
@@ -43,7 +43,7 @@ const loggingOut = () => {
             :to="{ path: '/login', name: 'Login' }"
           >
             <li
-              class="py-8 px-4 hover:cursor-pointer hover:bg-red-200 hover:text-red-800"
+              class="py-8 px-4 hover:cursor-pointer text-white hover:text-gray-700 hover:bg-gray-300"
             >
               Login
             </li>
@@ -51,14 +51,14 @@ const loggingOut = () => {
           <div v-else class="flex">
             <router-link :to="{ name: 'Secret' }">
               <li
-                class="py-8 px-4 hover:cursor-pointer hover:bg-red-200 hover:text-red-800"
+                class="py-8 px-4 hover:cursor-pointer hover:bg-gray-300 hover:text-gray-700"
               >
                 Secret
               </li>
             </router-link>
             <button @click="loggingOut">
               <li
-                class="py-8 px-4 hover:cursor-pointer hover:bg-red-200 hover:text-blue-800"
+                class="py-8 px-4 hover:cursor-pointer hover:bg-gray-300 hover:text-gray-700"
               >
                 Logout
               </li>

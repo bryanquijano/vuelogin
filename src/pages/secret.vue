@@ -1,10 +1,9 @@
 <template>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia unde rem quam
-    id officia dicta molestias dolorem eum aut! Dolorem reiciendis unde iusto,
-    quidem quam recusandae asperiores neque dignissimos doloremque magnam
-    perspiciatis, odio vitae sunt suscipit harum amet voluptate? Quidem
-    repudiandae vel deserunt laudantium autem, eos atque incidunt distinctio
-    quos!
-  </p>
+  <div class="h-screen">
+    <p class="text-white text-xl pt-3">
+      Welcome to the secret page that only authorized users have access to! If
+      you're seeing this without being logged in to the website then that means
+      I messed up somehow... Oops!
+    </p>
+  </div>
 </template>

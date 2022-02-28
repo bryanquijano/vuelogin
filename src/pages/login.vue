@@ -39,22 +39,24 @@ const { ready, start } = useTimeout(3000, { controls: true });
 </script>
 
 <template>
-  <div class="flex flex-col justify-center items-center min-h-screen-nonav">
+  <div
+    class="flex flex-col justify-center items-center min-h-screen-nonav bg-inherit"
+  >
     <!-- Logged in: {{ isAuthenticated }} -->
     <div
-      class="flex shadow-2xl rounded-lg justify-center items-center bg-gray-100 overflow-hidden"
+      class="flex shadow-2xl rounded-lg justify-center items-center bg-gray-300 overflow-hidden"
     >
       <img class="h-64" src="../assets/bglogin.png" alt="Hello GB" />
       <form @submit.prevent="logginIn" class="flex flex-col space-y-4 p-4">
         <input
           type="text"
-          class="border-2 p-2 rounded-lg"
+          class="border-2 p-2 rounded-lg border-gray-500"
           placeholder="Username"
           v-model="username"
         />
         <input
           type="password"
-          class="border-2 p-2 rounded-lg"
+          class="border-2 p-2 rounded-lg border-gray-500"
           placeholder="Password"
           v-model="password"
         />
@@ -62,13 +64,13 @@ const { ready, start } = useTimeout(3000, { controls: true });
           <button
             type="submit"
             @submit.prevent="logginIn"
-            class="bg-red-600 text-red-200 py-4 rounded-lg w-1/2"
+            class="bg-green-600 text-green-100 py-4 rounded-lg w-1/2 hover:bg-green-800 hover:text-white"
           >
             Login
           </button>
           <button
             @click="signingUp"
-            class="bg-green-600 text-green-200 py-4 rounded-lg w-1/2"
+            class="border-2 border-gray-500 text-blue-800 py-4 rounded-lg w-1/2 hover:bg-gray-400 hover:text-white hover:border-gray-900"
           >
             Sign Up
           </button>
