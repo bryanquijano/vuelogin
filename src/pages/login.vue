@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 import useAuth from "../composable/useAuth";
 import useError from "../composable/useError";
 
-const { isAuthenticated, login } = useAuth();
+const { isAuthenticated, login, signup } = useAuth();
 
 const username = ref("");
 const password = ref("");
@@ -13,6 +13,15 @@ const router = useRouter();
 
 const logginIn = async () => {
   await login(username.value, password.value);
+  goToHome();
+};
+
+const signingUp = async () => {
+  await signup(username.value, password.value);
+  goToHome();
+};
+
+const goToHome = () => {
   // If user is authenticated, send them to the home page
   if (isAuthenticated.value) {
     router.push("/");
@@ -49,13 +58,21 @@ const { ready, start } = useTimeout(3000, { controls: true });
           placeholder="Password"
           v-model="password"
         />
-        <button
-          type="submit"
-          @submit.prevent="logginIn"
-          class="bg-blue-600 text-blue-200 py-4 rounded-lg"
-        >
-          Login
-        </button>
+        <div class="flex space-x-2">
+          <button
+            type="submit"
+            @submit.prevent="logginIn"
+            class="bg-red-600 text-red-200 py-4 rounded-lg w-1/2"
+          >
+            Login
+          </button>
+          <button
+            @click="signingUp"
+            class="bg-green-600 text-green-200 py-4 rounded-lg w-1/2"
+          >
+            Sign Up
+          </button>
+        </div>
       </form>
     </div>
     <div
