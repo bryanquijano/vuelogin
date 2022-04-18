@@ -5,7 +5,7 @@
   <div
     class="min-h-[500px] w-full mt-8 rounded-lg shadow-2xl flex flex-col justify-between bg-gray-700 text-white"
   >
-    <ul class="p-4 space-y-4">
+    <ul class="p-4 space-y-2">
       <li v-for="n in 5">
         <div class="flex justify-between bg-gray-600 px-4 py-2 rounded-lg">
           <span>Message itself </span>
